@@ -1,0 +1,177 @@
+@keyframes colorFade {
+  0%, 100% {
+    background-color: #13161a; /* Original dark grayish blue */
+  }
+  20% {
+    background-color: #341a1a; /* Dark red */
+  }
+  40% {
+    background-color: #1a3420; /* Dark green */
+  }
+  60% {
+    background-color: #34341a; /* Dark yellow */
+  }
+  80% {
+    background-color: #1a1a34; /* Dark blue, added for smoother transition */
+  }
+}
+
+@keyframes colorFadeOffset {
+  0%, 100% {
+    background-color: #34341a; /* Dark yellow */
+  }
+  20% {
+    background-color: #1a3420; /* Dark green */
+  }
+  40% {
+    background-color: #1a3420; /* Dark green */
+  }
+  60% {
+    background-color: #341a1a; /* Dark red */
+  }
+  80% {
+    background-color: #34341a; /* Dark yellow */
+  }
+}
+
+@font-face {
+  font-family: 'MagicFont';
+  src: url('KodeMono-VariableFont_wght.ttf') format('truetype');
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#magicCanvas {
+  position: fixed; /* Ensures canvas covers the whole screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Sends the canvas to the back */
+  animation: colorFade 30s infinite linear; /* Applies the color fading animation */
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding-top: 20px; /* Adjust based on your layout needs */
+  
+}
+
+.content {
+  text-align: center;
+  z-index: 2; /* Ensures text and button are above the canvas */
+}
+
+h1 {
+  font-family: 'MagicFont', sans-serif;
+  font-size: 2em; /* Bigger text */
+  color: white;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-family: 'MagicFont', sans-serif;
+  font-size: 1.5em; /* Smaller text */
+  color: white;
+  margin-bottom: 1em;
+}
+
+button {
+  background-color: #363636; /* Green */
+  color: white; /* White text color */
+  padding: 15px 32px; /* Padding around the text */
+  text-align: center; /* Center the text inside the button */
+  text-decoration: none; /* Remove underline from links */
+  display: inline-block; /* Allow setting dimensions */
+  font-family: 'MagicFont', sans-serif;
+  font-size: 16px; /* Text size */
+  margin: 4px 2px; /* Spacing around the button */
+  cursor: pointer; /* Change mouse cursor to pointer */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Optional: rounded corners */
+
+}
+
+button:hover {
+  animation: colorFadeOffset 30s infinite linear; /* Applies the color fading animation */
+
+}
+
+button:active {
+  box-shadow: 0 2px #313131; /* Smaller shadow to simulate pressing down */
+  transform: translateY(2px); /* Slightly move the button down */
+  button:active {
+  box-shadow: 0 2px #666; /* Smaller shadow to simulate pressing down */
+  transform: translateY(2px); /* Slightly move the button down */
+  }
+}
+/* */
+.cards-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  flex-wrap: wrap; /* Allow cards to wrap if needed */
+  gap: 60px; /* Space between card sets */
+}
+
+.card-set {
+  position: relative;
+  display: flex;
+  width: 300px; /* Adjust based on your card image width */
+  height: 420px; /* Adjust based on your card image height */
+  cursor: pointer;
+
+}
+
+.card-set img {
+  position: absolute;
+  border-radius: 4.8%;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease, z-index 0s linear 0.3s; /* Smooth transition for the transform */
+  z-index: 1; /* Ensure images stack correctly */
+}
+
+.card-set img:hover {
+  border-radius: 4.8%;
+  transform: translateY(-20px); /* Pull the card up */
+  z-index: 2; /* Ensure the hovered card is above others */
+  transition-delay: 0s; /* Apply transform immediately */
+}
+
+/* Stacking cards with slight offset */
+.card-set img:nth-child(1) { top: 0px; }
+.card-set img:nth-child(2) { top: 30px; }
+.card-set img:nth-child(3) { top: 60px; }
+.card-set img:nth-child(4) { top: 90px; }
+.card-set img:nth-child(5) { top: 120px; }
+/* */
+
+.site-footer {
+  font-family: 'MagicFont', sans-serif;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #13161a; /* Dark background */
+  flex-shrink: 0;
+  color: #fff; /* Light text */
+  margin-top: 300px; /* Ensures there's space between the content above and the footer */
+}
+
+.copyright {
+  font-size: 0.8em; /* Makes text smaller */
+  color: #a9a9a9; 
+}
